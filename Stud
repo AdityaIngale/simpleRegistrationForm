@@ -1,0 +1,84 @@
+from Home import *
+from Batch import *
+import time,sys,os
+
+message = ("||***************************************************||\n<<===================================================>>\n||****************REGISTRATION FORM******************||\n||***************************************************||\n<<===================================================>>\n")
+for i in message:
+    sys.stdout.write(i)
+    time.sleep(0.008)
+from gtts import gTTS
+from playsound import playsound
+tts = gTTS("hello Welcome to Registration Process")
+tts.save("Hello.mp3")
+playsound("Hello.mp3")
+time.sleep(0.6)
+a = ("<<~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~>>")
+b = ("|| Enter 1 for Student Registration ||")
+c = ("|| Enter 2 for Trainer Registration ||")
+d = ("<<~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~>>")
+e = [a,b,c,d]
+for i in e:
+    print(i)
+    time.sleep(0.5)
+time.sleep(0.6)
+dd = gTTS(" Press one for Student Registration and press two for trainer registration")
+dd.save("dd.mp3")
+playsound("dd.mp3")
+
+try:
+    choise = int(input("ENTER YOUT CHOISE ==>> "))
+    
+    if choise == 1:
+        from Stud_Registration import *
+        obj.reg()
+        homeStud()
+        try:
+            choise = int(input("ENTER YOUT CHOISE ==>> "))
+            while(choise < 5):
+                if choise == 1:
+                    from Stud_Profile import *
+                    obj.student_profile()
+                    homeStud()
+                    try:
+                        ch = int(input("ENTER YOUT CHOISE ==>> "))
+                        if ch == 2:
+                            Batch()
+                        elif ch == 1:
+                            print(">>>>>You have already Registered<<<<<")
+                    except:
+                        print("////Please Enter Choise in Number Only\\\\")
+                elif choise ==2:
+                    Batch()
+                elif choise == 3:
+                    from Trainer_Profile import*
+                    pass
+        except:
+                print("////Please Enter Choise in Number Only\\\\")
+    elif choise == 2:
+        from Trainer_Registration import *
+        obj.t_reg()
+        homeTain()
+        try:
+            choise = int(input("ENTER YOUT CHOISE ==>> "))
+            if choise == 1:
+                from Trainer_Profile import *
+                obj.t_profile()
+                homeTain()
+                try:
+                    ch = int(input("ENTER YOUT CHOISE ==>> "))
+                    if ch == 2:
+                        Batch()
+                    else:
+                        print(">>>>>>You have already Registered<<<<<<")
+                except:
+                    print("////Please Enter Choise in Number Only\\\\")
+            elif choise ==2:
+                Batch()
+            elif choise ==3:
+                pass
+                
+        except:
+            print("////Please Enter Choise in Number Only\\\\")
+except ValueError:
+    print("////Please Enter Choise in Number Only\\\\")
+        
